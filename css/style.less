@@ -1,0 +1,62 @@
+/*
+Theme Name: wilk.tech
+Author: Christopher Wilkinson
+Description: Custom theme for wilk.tech website
+Version: 0.0.1
+*/
+
+@darkColour: #2F2F2F;
+
+@font-face {
+  font-family:"LondonMM";
+  src:url("LondonMM.eot?") format("eot"),
+      url("LondonMM.woff") format("woff"),
+      url("LondonMM.ttf") format("truetype"),
+      url("LondonMM.svg#LondonMM") format("svg");
+  font-weight:normal;
+  font-style:normal;
+}
+
+
+body {
+  font-family: 'Noto Sans', Calibri, Ariel, sans-serif;
+}
+
+p, li {
+  font-family: "LondonMM", sans-serif;
+}
+
+.tags {
+  font-size: 1.5rem;
+  list-style: none;
+
+  a {
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem;
+  }
+
+  &-inline li {
+    display: inline-block;
+
+    &:not(:first-child):before {
+      display: inline;
+      padding-right: 0.5rem;
+      content: "/";
+    }
+    a {
+      display: inline-block;
+    }
+  }
+}
+
+.header-color {
+  background-color: #EBEBEB;
+}
+
+footer {
+  display: block;
+  padding: 0.5rem;
+  background-color: @darkColour;
+  color: #fff;
+}
