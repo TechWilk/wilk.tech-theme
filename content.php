@@ -1,7 +1,8 @@
 <main>
-  <h1><?php the_title() ?></h1>
+  <h2><a href="<?php echo get_permalink() ?>"><?php the_title() ?></a></h2>
 
-  <ul>
-    <li></li>
-  </ul>
+  <?php if ( has_post_thumbnail() ) {
+  the_post_thumbnail();
+} ?>
+  
 </main>

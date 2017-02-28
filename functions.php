@@ -1,5 +1,25 @@
 <?php
 
+// Support Featured Images
+add_theme_support( 'post-thumbnails' );
+
+// WordPress Titles
+add_theme_support( 'title-tag' );
+
+// Add scripts and stylesheets
+function startwordpress_scripts() {
+	wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.css' );
+}
+
+add_action( 'wp_enqueue_scripts', 'startwordpress_scripts' );
+
+// Add Google Fonts
+function startwordpress_google_fonts() {
+				wp_register_style('NotoSans', 'http://fonts.googleapis.com/css?family=Noto+Sans:400,600,700,800');
+				wp_enqueue_style( 'NotoSans');
+		}
+
+add_action('wp_print_styles', 'startwordpress_google_fonts');
 
 
 // ~~~~~~~~~~ Custom Post Types ~~~~~~~~~~
@@ -52,6 +72,7 @@ function meta_options(){
   $custom = get_post_custom($post->ID);
   $tagline = $custom["tagline"][0];
   $location = $custom["location"][0];
+  $for = $custom["for"][0];
   $date = $custom["date"][0];
   $url = $custom["url"][0];
   $key_color = $custom["key_color"][0];
@@ -64,6 +85,10 @@ function meta_options(){
   <p>
     <label for="location">Location:</label>
     <input type="text" maxlength="35" style="width:100%;" id="location" name="location" value="<?php echo $location; ?>" />
+  </p>
+  <p>
+    <label for="for">For:</label>
+    <input type="text" maxlength="35" style="width:100%;" id="location" name="for" value="<?php echo $for; ?>" />
   </p>
   <p>
     <label for="date">Date:</label>
@@ -86,6 +111,7 @@ function save_extra_fields(){
   global $post;
   update_post_meta($post->ID, "tagline", $_POST["tagline"]);
   update_post_meta($post->ID, "location", $_POST["location"]);
+  update_post_meta($post->ID, "for", $_POST["for"]);
   update_post_meta($post->ID, "date", $_POST["date"]);
   update_post_meta($post->ID, "url", $_POST["url"]);
   update_post_meta($post->ID, "key_color", $_POST["key_color"]);

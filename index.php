@@ -1,5 +1,17 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'content', get_post_format() ); ?>
+<main>
+  <h1>Christopher Wilkinson</h1>
+  <p>Interactive Multimedia Specialist</p>
+
+  <?php if (count(get_tags()) > 0): ?>
+  <ul class="tags">
+    <?php foreach (get_tags() as $tag):?>
+    <li><a href="<?php echo get_tag_link($tag->term_id) ?>"><?php echo ucwords($tag->name) ?></a></li>
+    <?php endforeach ?>
+  </ul>
+  <?php endif ?>
+
+</main>
 
 <?php get_footer(); ?>
