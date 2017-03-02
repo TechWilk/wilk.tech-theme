@@ -7,6 +7,8 @@ Version: 0.0.1
 
 @darkColour: #2F2F2F;
 
+@defaultHeaderColour: #EBEBEB;
+
 @font-face {
   font-family:"LondonMM";
   src:url("LondonMM.eot?") format("eot"),
@@ -132,7 +134,15 @@ img {
 }
 
 .header-color {
-  background-color: #EBEBEB;
+  background-color: @defaultHeaderColour;
+}
+
+.cropped-image {
+  img {
+    object-fit: cover;
+    height: 10rem;
+    width: 100%;
+  }
 }
 
 .site {
@@ -173,6 +183,14 @@ img {
 
 .section {
   padding: 0.8rem 0;
+}
+
+.content {
+  padding: 0;
+  img {
+    border-top: @defaultHeaderColour solid 0.5rem;
+    border-bottom: @defaultHeaderColour solid 0.5rem;
+  }
 }
 
 .meta {

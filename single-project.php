@@ -1,6 +1,7 @@
 <?php 
 
 get_header(); 
+the_post(); // set the current post
 
  
 ?>
@@ -11,10 +12,13 @@ get_header();
 		color: #fff;
 		background-color: <?php echo get_post_meta($post->ID, "key_color", true) ?>;
 	}
+	.post<?php echo get_the_ID() ?> .content img {
+		border-color: <?php echo get_post_meta($post->ID, "key_color", true) ?>;
+	}
 </style>
 
 <article class="post<?php echo get_the_ID() ?>">
-	<div class="header-color">
+	<div class="header-color cropped-image">
 		<h1><?php the_title(); ?></h1>
 		<p><?php echo get_post_meta($post->ID, "tagline", true) ?></p>
 		<?php if ( has_post_thumbnail() ) {
@@ -32,8 +36,9 @@ get_header();
 		<?php endif ?>
 	</div>
 
-	<h2>Content</h2>
-	<?php the_content(); ?>
+	<div class="content">
+		<?php the_content(); ?>
+	</div>
 
 	<div class="meta">
 		<ul>

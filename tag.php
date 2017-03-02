@@ -8,12 +8,16 @@ $tag = get_queried_object();
 ?>
 <main>
   <h1><?php echo ucwords($tag->name) ?></h1>
+  <?php if (!empty($tag->description)): ?>
+  <p><?php echo $tag->description ?></p>
+  <?php endif ?>
 
   <?php
   $args =  [
     'post_type' => 'project',
-    'orderby' => 'menu_order',
-    'order' => 'ASC',
+    'meta_key' => 'date',
+		'orderby' => 'meta_value',
+    'order' => 'DESC',
     'tag' => $tag->slug
   ];
   $project_query = new WP_Query( $args ); ?>

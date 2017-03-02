@@ -1,4 +1,4 @@
-<article class="post<?php echo get_the_ID() ?>">
+<article class="post<?php echo get_the_ID() ?> cropped-image">
   <style>
     .post<?php echo get_the_ID() ?> .header-color,
     .post<?php echo get_the_ID() ?> .meta,

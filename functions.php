@@ -7,19 +7,25 @@ add_theme_support( 'post-thumbnails' );
 add_theme_support( 'title-tag' );
 
 // Add scripts and stylesheets
-function startwordpress_scripts() {
+function add_scripts() {
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.css' );
 }
 
-add_action( 'wp_enqueue_scripts', 'startwordpress_scripts' );
+add_action( 'wp_enqueue_scripts', 'add_scripts' );
 
 // Add Google Fonts
-function startwordpress_google_fonts() {
+function add_google_fonts() {
 				wp_register_style('NotoSans', 'http://fonts.googleapis.com/css?family=Noto+Sans:400,600,700,800');
 				wp_enqueue_style( 'NotoSans');
 		}
 
-add_action('wp_print_styles', 'startwordpress_google_fonts');
+add_action('wp_print_styles', 'add_google_fonts');
+
+// Remore <p> surrounding <img> tags - https://css-tricks.com/snippets/wordpress/remove-paragraph-tags-from-around-images/
+function filter_ptags_on_images($content){
+  return preg_replace('/<p>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s', '\1', $content);
+}
+add_filter('the_content', 'filter_ptags_on_images');
 
 
 // ~~~~~~~~~~ Custom Post Types ~~~~~~~~~~
