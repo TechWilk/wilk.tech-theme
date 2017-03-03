@@ -28,5 +28,11 @@ $tag = get_queried_object();
 
   <?php endwhile ?>
 
+  <div class="section">
+	<a href="../../project/" class="button text text-large">
+		&lt; view all projects
+	</a>
+</div>
+
 </main>
 <?php get_footer(); ?>

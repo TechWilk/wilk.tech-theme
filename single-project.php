@@ -28,7 +28,7 @@ the_post(); // set the current post
 
 	<div class="section">
 		<?php if (count(get_the_tags()) > 0): ?>
-		<ul class="tags tags-inline tags-center">
+		<ul class="tags tags-inline tags-center tags-inline-slash">
 			<?php foreach (get_the_tags() as $tag):?>
 			<li><a href="<?php echo get_tag_link($tag->term_id) ?>"><?php echo ucwords($tag->name) ?></a></li>
 			<?php endforeach ?>
