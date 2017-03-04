@@ -24,5 +24,7 @@ $tag = get_queried_object();
 
   <?php endwhile ?>
 
+	<p class="text text-large text-center">etc.</p>
+
 </main>
 <?php get_footer(); ?>
