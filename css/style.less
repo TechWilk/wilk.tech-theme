@@ -8,6 +8,7 @@ Version: 0.0.1
 @darkColour: #2F2F2F;
 
 @defaultHeaderColour: #EBEBEB;
+@navBackgroundColour: #fff;
 
 @font-face {
   font-family:"LondonMM";
@@ -102,6 +103,101 @@ p {
 img {
   width: 100%;
   height: auto;
+}
+
+header {
+  position: relative;
+
+  .title {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    z-index: 99;
+    color: #2F2F2F;
+    text-decoration: none;
+    font-size: 1.5rem;
+
+  }
+
+  #hamburger {
+    display: none;
+  }
+
+  .hamburger {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 2rem;
+    padding: 0.5rem;
+    z-index: 99;
+
+    .line {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 0.3rem;
+      background-color: #2F2F2F;
+      margin-bottom: 0.4rem;
+    }
+
+    & > .text {
+      display: none;
+    }
+  }
+
+  #hamburger:checked + .hamburger + nav {
+    //opacity: 1;
+    left: 0;
+    -webkit-transition: all .5s ease-out;
+       -moz-transition: all .5s ease-out;
+            transition: all .5s ease-out;
+  }
+
+  nav {
+    background-color: @navBackgroundColour;
+    //padding: 0 18px;
+    -webkit-transition: all .5s ease-in;
+       -moz-transition: all .5s ease-in;
+            transition: all .5s ease-in;
+
+    // make into mobile menu
+    position: absolute;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    left: -100%;
+    top: 0;
+    z-index: 98;
+    //opacity: 0;
+
+    ul li {
+
+      a {
+        display: inline-block;
+        padding: 1rem 2rem;
+      }
+
+      &.current-menu-item {
+        background-color: #bbb;
+      }
+    }
+  }
+}
+
+
+.text {
+  font-family: "LondonMM", sans-serif;
+  &-large {
+    font-size: 1.5rem;
+    padding: 1rem 0.8rem; // top+bottom right+left
+  }
+
+  &-center {
+    text-align: center;
+  }
 }
 
 .tags {
@@ -201,14 +297,6 @@ img {
   display: block;
   text-align: center;
   text-decoration: none;
-
-  &.text {
-    font-family: "LondonMM", sans-serif;
-    &-large {
-      font-size: 1.5rem;
-      padding: 1rem 0.8rem; // top+bottom right+left
-    }
-  }
 }
 
 .section {
@@ -281,8 +369,4 @@ footer {
   background-color: @darkColour;
   color: #fff;
   text-align: center;
-
-  small {
-    //something
-  }
 }

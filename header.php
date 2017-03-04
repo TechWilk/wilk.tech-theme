@@ -9,7 +9,14 @@
 <body>
   <header>
     <a class="title" href="<?php bloginfo( 'wpurl' );?>"><?php bloginfo('name') ?></a>
+    <input type="checkbox" name="hamburger" id="hamburger" />
+    <label for="hamburger" class="hamburger">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="text">Menu</span>
+    </label>
     <nav>
-      <?php wp_nav_menu( [] ) ?>
+      <?php wp_nav_menu( ['container' => false] ) ?>
     </nav>
   </header>
