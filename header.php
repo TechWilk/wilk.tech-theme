@@ -14,7 +14,6 @@
       <span class="line"></span>
       <span class="line"></span>
       <span class="line"></span>
-      <span class="text">Menu</span>
     </label>
     <nav>
       <?php wp_nav_menu( ['container' => false] ) ?>

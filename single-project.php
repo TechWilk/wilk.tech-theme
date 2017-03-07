@@ -3,27 +3,32 @@
 get_header(); 
 the_post(); // set the current post
 
- 
+$postColor = get_post_meta($post->ID, "key_color", true);
+
 ?>
 <style>
 	.post<?php echo get_the_ID() ?> .header-color,
 	.post<?php echo get_the_ID() ?> .meta,
-	.post<?php echo get_the_ID() ?> blockquote {
+	.post<?php echo get_the_ID() ?> blockquote,
+	.post<?php echo get_the_ID() ?> .content a:hover {
 		color: #fff;
-		background-color: <?php echo get_post_meta($post->ID, "key_color", true) ?>;
+		background-color: <?php echo $postColor ?>;
 	}
 	.post<?php echo get_the_ID() ?> .content img {
-		border-color: <?php echo get_post_meta($post->ID, "key_color", true) ?>;
+		border-color: <?php echo $postColor ?>;
+	}
+	.post<?php echo get_the_ID() ?> .content a {
+		color: <?php echo $postColor ?>;
 	}
 </style>
 
 <article class="post<?php echo get_the_ID() ?>">
 	<div class="header-color cropped-image">
-		<h1><?php the_title(); ?></h1>
-		<p><?php echo get_post_meta($post->ID, "tagline", true) ?></p>
 		<?php if ( has_post_thumbnail() ) {
 			the_post_thumbnail();
 		} ?>
+		<h1><?php the_title(); ?></h1>
+		<p><?php echo get_post_meta($post->ID, "tagline", true) ?></p>
 	</div>
 
 	<div class="section">

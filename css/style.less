@@ -133,6 +133,7 @@ header {
     height: 2rem;
     padding: 0.5rem;
     z-index: 99;
+    cursor: pointer;
 
     .line {
       position: relative;
@@ -141,27 +142,53 @@ header {
       height: 0.3rem;
       background-color: #2F2F2F;
       margin-bottom: 0.4rem;
-    }
-
-    & > .text {
-      display: none;
+      -webkit-transition: all .3s ease-in;
+         -moz-transition: all .3s ease-in;
+              transition: all .3s ease-in;
     }
   }
 
-  #hamburger:checked + .hamburger + nav {
-    //opacity: 1;
-    left: 0;
-    -webkit-transition: all .5s ease-out;
-       -moz-transition: all .5s ease-out;
-            transition: all .5s ease-out;
+  #hamburger:checked + .hamburger {
+
+    & .line {
+      -webkit-transition: all .2s ease-out;
+         -moz-transition: all .2s ease-out;
+              transition: all .2s ease-out;
+      opacity: 0;
+      margin-bottom: 0;
+
+      &:first-child {
+        margin-top: 0.5rem;
+        opacity: 1;
+            -ms-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+
+      &:last-child {
+        margin-top: -0.5rem;
+        opacity: 1;
+            -ms-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+    
+    & + nav {
+      //opacity: 1;
+      left: 0;
+      -webkit-transition: all .2s ease-out;
+         -moz-transition: all .2s ease-out;
+              transition: all .2s ease-out;
+    }
   }
 
   nav {
     background-color: @navBackgroundColour;
     //padding: 0 18px;
-    -webkit-transition: all .5s ease-in;
-       -moz-transition: all .5s ease-in;
-            transition: all .5s ease-in;
+    -webkit-transition: all .3s ease-in;
+       -moz-transition: all .3s ease-in;
+            transition: all .3s ease-in;
 
     // make into mobile menu
     position: absolute;
@@ -178,10 +205,15 @@ header {
       a {
         display: inline-block;
         padding: 1rem 2rem;
+        text-decoration: none;
       }
 
       &.current-menu-item {
         background-color: #bbb;
+
+        a {
+          color: #fff;
+        }
       }
     }
   }
@@ -311,6 +343,17 @@ header {
     margin: 1rem 0;
     border-top: @defaultHeaderColour solid 0.5rem;
     border-bottom: @defaultHeaderColour solid 0.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    padding: 0.2rem 0.2rem;
+    margin: -0.2rem -0.2rem;
+
+    &:hover {
+      color: #fff;
+      background-color: #59d;
+    }
   }
 }
 
