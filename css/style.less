@@ -290,7 +290,7 @@ header {
   background-color: @defaultHeaderColour;
 }
 
-.cropped-image {
+.project.teaser {
   img {
     object-fit: cover;
     height: 10rem;
@@ -322,6 +322,11 @@ header {
   .tags,
   .tags a {
     color: #fff;
+  }
+  img {
+    object-fit: cover;
+    height: 10rem;
+    width: 100%;
   }
 }
 
@@ -412,4 +417,63 @@ footer {
   background-color: @darkColour;
   color: #fff;
   text-align: center;
+}
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// MEDIA QUERIES
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@media screen and (min-width: 420px) {
+  .project.teaser img {
+    height: 12rem;
+  }
+}
+
+@media screen and (min-width: 520px) {
+  p {
+    padding: 0.5rem 2rem;
+  }
+
+  .project.teaser img {
+    height: 15rem;
+  }
+
+
+}
+
+@media screen and (min-width: 620px) {
+  p {
+    padding: 0.6rem 3rem;
+  }
+
+  .project.teaser {
+    display: inline-block;
+    width: 49.6%;
+
+    img {
+      height: 10rem;
+    }
+  }
+}
+
+@media screen and (min-width: 620px) {
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    img {
+      margin: 1.5rem 0;
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .content {
+    padding: 0 2rem;
+
+    p {
+      padding: 0.6rem 0;
+    }
+  }
 }

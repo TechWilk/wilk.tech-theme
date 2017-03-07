@@ -1,4 +1,4 @@
-<article class="post<?php echo get_the_ID() ?> cropped-image teaser">
+<article class="post<?php echo get_the_ID() ?> project teaser">
   <style>
     .post<?php echo get_the_ID() ?> .header-color,
     .post<?php echo get_the_ID() ?> .meta,
