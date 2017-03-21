@@ -7,7 +7,8 @@ $tag = get_queried_object();
  
 ?>
 <main>
-  <h1>Projects</h1>
+  <?php custom_breadcrumbs(); ?>
+  <h1 class="title">Projects</h1>
 
   <?php
   $args =  [

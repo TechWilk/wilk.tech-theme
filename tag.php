@@ -7,7 +7,8 @@ $tag = get_queried_object();
  
 ?>
 <main>
-  <h1><?php echo ucwords($tag->name) ?> projects</h1>
+  <?php custom_breadcrumbs(); ?>
+  <h1 class="title"><?php echo ucwords($tag->name) ?> projects</h1>
   <?php if (!empty($tag->description)): ?>
   <p><?php echo $tag->description ?></p>
   <?php endif ?>

@@ -1,4 +1,4 @@
-<article class="post<?php echo get_the_ID() ?> project teaser">
+<article class="post<?php echo get_the_ID() ?> project teaser" ontouchstart="">
   <style>
     .post<?php echo get_the_ID() ?> .header-color,
     .post<?php echo get_the_ID() ?> .meta,

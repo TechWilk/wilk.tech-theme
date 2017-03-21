@@ -14,7 +14,9 @@ $postColor = get_post_meta($post->ID, "key_color", true);
 		color: #fff;
 		background-color: <?php echo $postColor ?>;
 	}
-	.post<?php echo get_the_ID() ?> .content img {
+	.post<?php echo get_the_ID() ?> .content img,
+	.post<?php echo get_the_ID() ?> .content .wp-video,
+	.post<?php echo get_the_ID() ?> .content iframe {
 		border-color: <?php echo $postColor ?>;
 	}
 	.post<?php echo get_the_ID() ?> .content a {
@@ -30,6 +32,7 @@ $postColor = get_post_meta($post->ID, "key_color", true);
 		<h1><?php the_title(); ?></h1>
 		<p><?php echo get_post_meta($post->ID, "tagline", true) ?></p>
 	</div>
+	<?php custom_breadcrumbs(); ?>
 
 	<div class="section">
 		<?php if (count(get_the_tags()) > 0): ?>

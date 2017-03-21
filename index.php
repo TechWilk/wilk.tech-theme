@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main>
+<main class="home">
   <h1 class="site-title">Christopher Wilkinson</h1>
   <p class="site-tagline">Interactive Multimedia Specialist</p>
 

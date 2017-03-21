@@ -12,10 +12,10 @@ Version: 0.0.1
 
 @font-face {
   font-family:"LondonMM";
-  src:url("LondonMM.eot?") format("eot"),
-      url("LondonMM.woff") format("woff"),
-      url("LondonMM.ttf") format("truetype"),
-      url("LondonMM.svg#LondonMM") format("svg");
+  src:url("fonts/LondonMM.eot?") format("eot"),
+      url("fonts/LondonMM.woff") format("woff"),
+      url("fonts/LondonMM.ttf") format("truetype"),
+      url("fonts/LondonMM.svg#LondonMM") format("svg");
   font-weight:normal;
   font-style:normal;
 }
@@ -219,6 +219,29 @@ header {
   }
 }
 
+.breadcrumbs {
+  li {
+    display: inline-block;
+    &:not(:first-child):before {
+      color: #A2A2A2;
+      content: '>';
+      display: inline-block;
+
+    }
+  }
+  a, strong {
+    display: inline-block;
+    padding: 0.5rem;
+  }
+  a {
+    text-decoration: none;
+    color: #A2A2A2;
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
 
 .text {
   font-family: "LondonMM", sans-serif;
@@ -242,7 +265,11 @@ header {
     color: #A2A2A2;
     text-decoration: none;
     display: block;
-    padding: 0.5rem;
+    padding: 0.8rem 0.5rem;
+
+    &:hover {
+      color: #000;
+    }
   }
 
   &-inline {
@@ -301,12 +328,12 @@ header {
 .site {
   &-title {
     text-align: center;
-    padding: 0.5rem;
+    padding: 1rem 0.5rem 0.5rem;
   }
   &-tagline {
     text-align: center;
     font-size: 1.2rem;
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem;
   }
 }
 
@@ -330,6 +357,18 @@ header {
   }
 }
 
+.single-project {
+   header .hamburger .line {
+     background-color: #fff;
+   }
+   header .title {
+     color: #fff;
+   }
+   #hamburger:checked + .hamburger .line {
+     background-color: #2F2F2F;
+   }
+}
+
 .button {
   display: block;
   text-align: center;
@@ -340,11 +379,21 @@ header {
   padding: 0.8rem 0;
 }
 
+.title {
+  padding-top: 3rem;
+}
+
 .content {
   padding: 0;
   line-height: 1.4rem;
 
-  img {
+  iframe {
+    resize: both;
+  }
+
+  img,
+  .wp-video,
+  iframe {
     margin: 1rem 0;
     border-top: @defaultHeaderColour solid 0.5rem;
     border-bottom: @defaultHeaderColour solid 0.5rem;
@@ -372,16 +421,25 @@ header {
 }
 
 .teaser {
+  overflow: hidden;
   position: relative;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 
   .header-color {
-    display: none;
+    display: block;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 100%;
     width: 100%;
     height: 100%;
     opacity: 0.95;
+    -webkit-transition: left 0.2s;
+    transition: left 0.2s;
   }
 
   .tags {
@@ -389,6 +447,9 @@ header {
     bottom: 0;
     left: 0;
     font-size: 0.8rem;
+    a {
+      padding: 0.5rem;
+    }
   }
 
   .more {
@@ -407,7 +468,10 @@ header {
 
   &:hover .header-color,
   &:focus .header-color {
-    display: block;
+    left: 0;
+    -webkit-transition: left 0.4s;
+    transition: left 0.4s;
+    //display: block;
   }
 }
 
@@ -417,6 +481,14 @@ footer {
   background-color: @darkColour;
   color: #fff;
   text-align: center;
+}
+
+.home {
+  padding: 4rem 0;
+
+  .site-tagline {
+    padding-bottom: 3rem;
+  }
 }
 
 
@@ -458,22 +530,88 @@ footer {
 }
 
 @media screen and (min-width: 620px) {
-  .content {
+  .header-color img {
+    height: 15rem;
+  }
+  .content,
+  main {
     max-width: 800px;
     margin: 0 auto;
-
-    img {
+  }
+  .content {
+    img,
+    .wp-video,
+    iframe {
       margin: 1.5rem 0;
+    }
+    .tags {
+      padding: 1rem;
     }
   }
 }
 
 @media screen and (min-width: 800px) {
+  .header-color {
+    h1, h2, h3 {
+      padding: 1.4rem 1.4rem 0.5rem; // top right+left bottom
+    }
+    p {
+      padding: 0.5rem 1.4rem 1.4rem; // top right+left bottom
+    }
+    img {
+      height: 18rem;
+    }
+  }
   .content {
     padding: 0 2rem;
 
     p {
       padding: 0.6rem 0;
+    }
+
+    img,
+    .wp-video,
+    iframe {
+      display: block;
+      border: @defaultHeaderColour solid 0.5rem;
+      max-width: 80%;
+      max-height: 32rem;
+      margin: 1.5rem auto;
+    }
+    img {
+      width: auto;
+
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .header-color {
+    h1, h2, h3 {
+      padding: 1.8rem 1.8rem 0.5rem; // top right+left bottom
+    }
+    p {
+      padding: 0.5rem 1.8rem 1.8rem; // top right+left bottom
+    }
+    img {
+      height: 20rem;
+    }
+  }
+}
+
+
+@media screen and (min-width: 1500px) {
+  .header-color {
+    img {
+      height: 24rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .header-color {
+    img {
+      height: 28rem;
     }
   }
 }

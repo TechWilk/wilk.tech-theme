@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php wp_head();?>
 </head>
-<body>
+<body <?php echo body_class() ?>>
   <header>
     <a class="title" href="<?php bloginfo( 'wpurl' );?>"><?php bloginfo('name') ?></a>
     <input type="checkbox" name="hamburger" id="hamburger" />
@@ -16,6 +16,9 @@
       <span class="line"></span>
     </label>
     <nav>
-      <?php wp_nav_menu( ['container' => false] ) ?>
+      <ul>
+        <li><a href="<?php bloginfo( 'wpurl' );?>">Home</a></li>
+        <?php wp_nav_menu( ['container' => false, 'items_wrap' => '%3$s'] ) ?>
+      </ul>
     </nav>
   </header>
