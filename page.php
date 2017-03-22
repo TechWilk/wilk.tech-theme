@@ -5,7 +5,6 @@ get_header();
 
  
 ?>
-<?php custom_breadcrumbs(); ?>
 <h1 class="title"><?php the_title() ?></h1>
 
 
