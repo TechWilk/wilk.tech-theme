@@ -1,9 +1,15 @@
+<?php
 
+the_post(); // set the current post
+$postColor = get_post_meta($post->ID, "key_color", true);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_uri(); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="<?php echo isset($postColor) ? $postColor : '#db5945' ?>">
   <?php wp_head();?>
 </head>
 <body <?php echo body_class() ?>>

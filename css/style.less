@@ -209,7 +209,7 @@ header {
       }
 
       &.current-menu-item {
-        background-color: #bbb;
+        background-color: rgba(0,0,0,0.5);
 
         a {
           color: #fff;
@@ -358,15 +358,23 @@ header {
 }
 
 .single-project {
-   header .hamburger .line {
-     background-color: #fff;
-   }
-   header .title {
-     color: #fff;
-   }
-   #hamburger:checked + .hamburger .line {
-     background-color: #2F2F2F;
-   }
+  header {
+    .hamburger .line {
+      background-color: #fff;
+    }
+    .title {
+      color: #fff;
+    }
+    nav li.menu-item-object-project {
+      background-color: rgba(0,0,0,0.5);
+      a {
+        color: #fff;
+      }
+    }
+  }
+  #hamburger:checked + .hamburger .line {
+    background-color: #2F2F2F;
+  }
 }
 
 .button {
@@ -438,6 +446,7 @@ header {
     width: 100%;
     height: 100%;
     opacity: 0.95;
+    z-index: 20;
     -webkit-transition: left 0.2s;
     transition: left 0.2s;
   }
@@ -447,8 +456,17 @@ header {
     bottom: 0;
     left: 0;
     font-size: 0.8rem;
+    li {
+      vertical-align: bottom;
+    }
     a {
       padding: 0.5rem;
+      -webkit-transition: padding 0.2s;
+      transition: padding 0.2s;
+      &:hover {
+        padding-top:0.3rem;
+        padding-bottom:0.7rem;
+      }
     }
   }
 
@@ -463,7 +481,31 @@ header {
 
     &:hover {
       background-color: rgba(0,0,0,0.25);
+
+      &:after {
+        margin-right: -0.2rem;
+        margin-left: 0.2rem;
+      }
     }
+
+    &:after {
+      content: '>';
+      display: inline-block;
+      z-index: 10;
+      -webkit-transition: margin 0.2s;
+      transition: margin 0.2s;
+    }
+  }
+
+  &:after {
+    color: rgba(255,255,255,0.4);
+    font-size: 5.5rem;
+    content: '>';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2rem 0.4rem;
   }
 
   &:hover .header-color,
@@ -484,7 +526,10 @@ footer {
 }
 
 .home {
-  padding: 4rem 0;
+
+  main {
+    padding: 4rem 0;
+  }
 
   .site-tagline {
     padding-bottom: 3rem;
@@ -499,6 +544,10 @@ footer {
 @media screen and (min-width: 420px) {
   .project.teaser img {
     height: 12rem;
+  }
+
+  .header-color p {
+    font-size: 1.2rem;
   }
 }
 
@@ -532,6 +581,34 @@ footer {
 @media screen and (min-width: 620px) {
   .header-color img {
     height: 15rem;
+  }
+  header {
+    .hamburger {
+      display: none;
+    }
+    nav {
+      left: 0;
+      //width: auto;
+      padding: 0;
+      background-color: transparent;
+
+      li {
+        display: inline-block;
+      }
+    }
+  }
+  .single-project {
+    nav {
+      background-color: rgba(0,0,0,0.25);
+      li {
+        &.menu-item-object-project {
+          background-color: rgba(0,0,0,0.5);
+        }
+        a {
+          color: #fff;
+        }
+      }
+    }
   }
   .content,
   main {

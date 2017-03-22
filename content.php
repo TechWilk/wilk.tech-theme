@@ -24,7 +24,7 @@
     <?php endif ?>
     <p>
       <a class="more" href="<?php echo get_permalink() ?>">
-        more info >
+        more info
       </a>
     </p>
   </div>

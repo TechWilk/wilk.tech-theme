@@ -1,7 +1,7 @@
 <?php 
 
 get_header(); 
-the_post(); // set the current post
+//the_post(); // set the current post
 
  
 ?>

@@ -1,7 +1,6 @@
 <?php 
 
 get_header(); 
-the_post(); // set the current post
 
 $postColor = get_post_meta($post->ID, "key_color", true);
 
