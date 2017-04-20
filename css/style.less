@@ -9,6 +9,9 @@ Version: 0.0.1
 
 @defaultHeaderColour: #EBEBEB;
 @navBackgroundColour: #fff;
+@navCurrentItemBackgroundColor: rgba(0,0,0,0.6);
+@navHoverBackgroundColor: rgba(0,0,0,0.4);
+@linkColor: #59d;
 
 @font-face {
   font-family:"LondonMM";
@@ -97,6 +100,14 @@ h2 {
 
 p {
   padding: 0.5rem 1rem;
+}
+
+a {
+  color: @linkColor;
+  
+  &:visited {
+    color: @linkColor;
+  }
 }
 
 
@@ -200,17 +211,26 @@ header {
     z-index: 98;
     //opacity: 0;
 
-    ul li {
+    li {
 
       a {
         display: inline-block;
         padding: 1rem 2rem;
         text-decoration: none;
+        width: 100%;
+        color: #000;
       }
 
       &.current-menu-item {
-        background-color: rgba(0,0,0,0.5);
-
+        background-color: @navCurrentItemBackgroundColor;
+        cursor: default;
+        pointer-events: none;
+        a {
+          color: #fff;
+        }
+      }
+      &:hover:not(.current-menu-item) {
+        background-color: @navHoverBackgroundColor;
         a {
           color: #fff;
         }
@@ -255,6 +275,48 @@ header {
   }
 }
 
+.show {
+  &-hidden {
+    display: none;
+  }
+}
+
+.section {
+  padding: 0.8rem 0;
+}
+
+.title {
+  padding-top: 3rem;
+}
+
+.content {
+  padding: 0;
+  line-height: 1.4rem;
+
+  iframe {
+    resize: both;
+  }
+
+  img,
+  .wp-video,
+  iframe {
+    margin: 1rem 0;
+    border-top: @defaultHeaderColour solid 0.5rem;
+    border-bottom: @defaultHeaderColour solid 0.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    padding: 0.2rem 0.2rem;
+    margin: -0.2rem -0.2rem;
+
+    &:hover {
+      color: #fff;
+      background-color: @linkColor;
+    }
+  }
+}
+
 .tags {
   color: #A2A2A2;
   font-size: 1.5rem;
@@ -262,12 +324,14 @@ header {
   padding: 0.5rem;
 
   a {
+    background-color: transparent;
     color: #A2A2A2;
     text-decoration: none;
     display: block;
     padding: 0.8rem 0.5rem;
 
     &:hover {
+      background-color: transparent;
       color: #000;
     }
   }
@@ -328,7 +392,7 @@ header {
 .site {
   &-title {
     text-align: center;
-    padding: 1rem 0.5rem 0.5rem;
+    padding: 4rem 0.5rem 0.5rem;
   }
   &-tagline {
     text-align: center;
@@ -365,15 +429,19 @@ header {
     .title {
       color: #fff;
     }
-    nav li.menu-item-object-project {
-      background-color: rgba(0,0,0,0.5);
-      a {
-        color: #fff;
-      }
-    }
   }
   #hamburger:checked + .hamburger .line {
     background-color: #2F2F2F;
+  }
+}
+
+.single-project,
+.tag {
+  header nav li.menu-item-object-project {
+    background-color: @navCurrentItemBackgroundColor;
+    a {
+      color: #fff;
+    }
   }
 }
 
@@ -381,42 +449,6 @@ header {
   display: block;
   text-align: center;
   text-decoration: none;
-}
-
-.section {
-  padding: 0.8rem 0;
-}
-
-.title {
-  padding-top: 3rem;
-}
-
-.content {
-  padding: 0;
-  line-height: 1.4rem;
-
-  iframe {
-    resize: both;
-  }
-
-  img,
-  .wp-video,
-  iframe {
-    margin: 1rem 0;
-    border-top: @defaultHeaderColour solid 0.5rem;
-    border-bottom: @defaultHeaderColour solid 0.5rem;
-  }
-
-  a {
-    text-decoration: none;
-    padding: 0.2rem 0.2rem;
-    margin: -0.2rem -0.2rem;
-
-    &:hover {
-      color: #fff;
-      background-color: #59d;
-    }
-  }
 }
 
 .meta {
@@ -517,6 +549,20 @@ header {
   }
 }
 
+label {
+  input,
+  textarea {
+    font-size: 1.3rem;
+    width: 100%;
+    padding: 0.4rem;
+  }
+}
+
+input[type=submit] {
+  font-size: 1.3rem;
+  padding: 0.4rem;
+}
+
 footer {
   display: block;
   padding: 0.5rem;
@@ -526,11 +572,6 @@ footer {
 }
 
 .home {
-
-  main {
-    padding: 4rem 0;
-  }
-
   .site-tagline {
     padding-bottom: 3rem;
   }
@@ -556,11 +597,48 @@ footer {
     padding: 0.5rem 2rem;
   }
 
+  .show-wide {
+    display: block;
+  }
+
   .project.teaser img {
     height: 15rem;
   }
+  .tags-inline-wide {
+    li {
+        display: inline-block;
 
+      a {
+        display: inline-block;
+      }
+    }
 
+    &-slash {
+      li {
+
+        &:not(:first-child):before {
+          display: inline;
+          padding-right: 0.5rem;
+          content: "/";
+        }
+      }
+    }
+
+    &-comma li {
+      &:not(:first-child) a {
+        padding-left: 0;
+      }
+      &:not(:last-child) {
+        a {
+          padding-right: 0.1rem;
+        }
+        a:after {
+          display: inline;
+          content: ",";
+        }
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 620px) {
@@ -588,7 +666,6 @@ footer {
     }
     nav {
       left: 0;
-      //width: auto;
       padding: 0;
       background-color: transparent;
 
@@ -610,6 +687,9 @@ footer {
       }
     }
   }
+  .text-large {
+    margin-top: 1rem;
+  }
   .content,
   main {
     max-width: 800px;
@@ -625,6 +705,9 @@ footer {
       padding: 1rem;
     }
   }
+  footer {
+    margin-top: 2rem;
+  }
 }
 
 @media screen and (min-width: 800px) {
@@ -638,6 +721,13 @@ footer {
     img {
       height: 18rem;
     }
+  }
+  main .title {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+  .site-title {
+    padding-top: 5rem;
   }
   .content {
     padding: 0 2rem;
@@ -657,8 +747,11 @@ footer {
     }
     img {
       width: auto;
-
     }
+  }
+
+  footer {
+    margin-top: 4rem;
   }
 }
 
@@ -673,6 +766,13 @@ footer {
     img {
       height: 20rem;
     }
+  }
+  main .title {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+  .site-title {
+    padding-top: 6rem;
   }
 }
 
