@@ -15,7 +15,7 @@ add_action( 'wp_enqueue_scripts', 'add_scripts' );
 
 // Add Google Fonts
 function add_google_fonts() {
-				wp_register_style('NotoSans', 'http://fonts.googleapis.com/css?family=Noto+Sans:400,600,700,800');
+				wp_register_style('NotoSans', 'https://fonts.googleapis.com/css?family=Noto+Sans:400,600,700,800');
 				wp_enqueue_style( 'NotoSans');
 		}
 
