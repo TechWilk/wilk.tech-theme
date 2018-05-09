@@ -33,6 +33,11 @@ function filter_ptags_on_iframes($content){
 }
 add_filter('the_content', 'filter_ptags_on_iframes');
 
+function remove_wordpress_version() {
+  return '';
+}
+add_filter('the_generator', 'remove_wordpress_version');
+
 
 
 // ~~~~~~~~~~ Custom Post Types ~~~~~~~~~~
